@@ -1,0 +1,27 @@
+{
+  "name": "TodoApp",
+  "homepage": "https://github.com/johonunu/polymer1-learning",
+  "authors": [
+    "johonunu <johonunu@gmail.com>"
+  ],
+  "description": "Learning Polymer 1",
+  "main": "",
+  "keywords": [
+    "polymer",
+    "learning",
+    "basics"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.9.2",
+    "iron-elements": "^1",
+    "paper-elements": "^1"
+  }
+}
