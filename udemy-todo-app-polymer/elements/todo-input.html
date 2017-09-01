@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+
+<dom-module id="todo-input">
+  <template>
+    <div class="input-wrapper">
+      <paper-input id="todoInput"
+                   value="{{value}}"
+                   label="Add some todo"
+                   on-keydown="_checkAdd">
+      </paper-input>
+      <paper-button on-tap="_add">Add</paper-button>
+    </div>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'todo-input',
+    _checkAdd: function (e) {
+      if (e.keyCode === 13) {
+        this._add();
+      }
+    },
+    _add: function () {
+      if (this.value) {
+        this.fire('add-todo', {value: this.value});
+        this.value = null;
+      }
+    }
+  });
+</script>

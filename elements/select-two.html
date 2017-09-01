@@ -1,0 +1,37 @@
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
+
+<!-- define the markup that your element will use -->
+<dom-module id="select-2">
+
+  <template>
+    <select name="{{ name }}">
+     <content></content>
+    </select>
+  </template>
+
+  <script>
+   Polymer({
+     is: 'select-2',
+     properties: {
+       name: {
+         type: String
+       },
+       value: {
+        type:String
+      }
+    },
+    ready: function() {
+      var self = this;
+      var select = Polymer.dom(this.root).querySelector('select');
+      select.innerHTML = Polymer.dom(this).innerHTML;
+      $(select).select2({}).on('select2:select', function (evt) {
+        self.value = evt.target.value;
+      });
+    }
+  });
+</script>
+</dom-module>

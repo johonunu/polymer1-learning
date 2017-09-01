@@ -1,0 +1,28 @@
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+
+<dom-module id="proto-element">
+  <template>
+    <p>This is <b>{{ owner }}'s</b> proto element</p>
+    <input is="iron-input" bind-value="{{ owner }}" placeholder="Owner name" type="text" />
+  </template>
+</dom-module>
+
+
+<script>
+
+    Polymer({
+        is: 'proto-element',
+        properties: {
+            owner: {
+                type: String,
+                value: "Nikola"
+            }
+        },
+        ready: function(){
+            // this.owner = 'Nikola';
+        }
+    });
+
+</script>

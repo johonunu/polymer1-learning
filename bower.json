@@ -1,0 +1,22 @@
+{
+  "name": "polymer-learning",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "johonunu <johonunu@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.7.1",
+    "google-map": "1.2.0",
+    "iron-input": "PolymerElements/iron-input#^1.0.7"
+  }
+}

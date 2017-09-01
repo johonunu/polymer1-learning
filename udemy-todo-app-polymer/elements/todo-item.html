@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="todo-item">
+  <template>
+    <div class="flex" hidden="{{todo.archive}}">
+      <paper-checkbox checked="{{todo.done}}">{{todo.name}}</paper-checkbox>
+      <br>
+    </div>
+    <div class="flex layout horizontal" hidden="{{!todo.archive}}">
+      <span class="flex-11">{{todo.name}}</span>
+
+      <div class="flex-1">
+        <paper-icon-button class="end" icon="icons:undo" on-tap="_undo"></paper-icon-button>
+      </div>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'todo-item',
+      properties: {
+        todo: Object
+      },
+      _undo: function () {
+        this.set('todo.archive', false);
+      }
+    });
+  </script>
+</dom-module>

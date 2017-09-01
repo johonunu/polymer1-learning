@@ -1,0 +1,51 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<!-- Add your elements here -->
+<link rel="import" href="todo-item.html">
+
+<dom-module id="todo-list">
+  <template>
+    <template is="dom-repeat"
+              as="todo"
+              id="todoList"
+              items="{{todos}}"
+              observe="done archive"
+              filter="{{_filter(filterBy, query, hideArchive)}}">
+      <todo-item todo="{{todo}}"></todo-item>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      is: 'todo-list',
+      properties: {
+        todos: Array,
+        query: String,
+        hideArchive: {
+          type: Boolean,
+          value: false
+        },
+        filterBy: {
+          type: String,
+          value: 'all'
+        }
+      },
+      _filter: function (filterBy, query, hideArchive) {
+        return function (item) {
+          if (hideArchive && item.archive) {
+            return false;
+          }
+          if (!hideArchive && !item.archive) {
+            // for not archived items
+            return false;
+          }
+          if (query && item.name.toLowerCase().indexOf(query.toLowerCase()) < 0) {
+            return false;
+          }
+          if (filterBy === 'all') {
+            return true;
+          }
+          return item.done === (filterBy === 'completed');
+        };
+      }
+    });
+  </script>
+</dom-module>

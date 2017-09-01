@@ -1,0 +1,18 @@
+<script src="../bower_components/page/page.js"></script>
+
+<script>
+  window.addEventListener('WebComponentsReady', function () {
+    page('/', function () {
+      app.selected = 0;
+    });
+    page('/archive', function () {
+      app.selected = 1;
+    });
+    page('*', function () {
+      app.selected = 0;
+    });
+    page({
+      hashbang: false
+    });
+  });
+</script>

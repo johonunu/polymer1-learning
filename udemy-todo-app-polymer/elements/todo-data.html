@@ -1,0 +1,43 @@
+<!--
+https://www.polymer-project.org/1.0/docs/devguide/feature-overview.html
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/firebase-element/firebase-collection.html">
+
+<dom-module id="todo-data"><
+  <template>
+    <firebase-collection location="{{userLocation}}"
+                         on-firebase-value="_firebaseLoaded"
+                         data="{{fbTodos}}">
+    </firebase-collection>
+  </template>
+  <script>
+    Polymer({
+      is: 'todo-data', //defines element name
+      // set properties
+      properties: {
+        // for firebase url
+        location: String,
+        // for auth user
+        user: {
+          observer: '_userChanged'
+        },
+        todos: {
+          notify: true
+        }
+      },
+      // for auth user changed change userLocation for data
+      _userChanged: function () {
+        if (this.user && this.user.uid) {
+          this.userLocation = [this.location, 'users', this.user.uid].join('/');
+        } else {
+          this.userLocation = null;
+        }
+      },
+      _firebaseLoaded: function() {
+        this.todos = this.fbTodos;
+        this.linkPaths('fbTodos', 'todos');
+      }
+    });
+  </script>
+</dom-module>

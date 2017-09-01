@@ -1,0 +1,45 @@
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- define the markup that your element will use -->
+<dom-module id="my-property-namecard">
+
+	<style>
+      :host {
+        display: inline-block;
+        padding: 10px;
+        background: red;
+        color:#fff;
+      }
+    </style>
+
+  <template>
+    <div>Hi! My name is {{ myName }}</div>
+    <input type="text" value="{{ myName }}">
+
+    <button on-click="changeName" >Change</button>
+  </template>
+
+  <script>
+    // Create an element that takes a property
+	Polymer({
+	    is: 'my-property-namecard',
+	    properties: {
+	      myName: {
+	        type: String,
+          observer: '_nameChanged'
+	      }
+	    },
+      _nameChanged:  function(newValue, oldValue) {
+        this.myName = newValue;
+      },
+      changeName:  function(e) {
+        console.log(e);
+        this.myName = e.target.value;
+      }
+	    /*ready: function() {
+	      this.textContent = 'Hi! My name is ' + this.myName;
+	    }*/
+	});
+  </script>
+</dom-module>

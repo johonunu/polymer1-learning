@@ -1,0 +1,26 @@
+{
+  "name": "todo-polymer",
+  "version": "1.0.0",
+  "authors": [
+    "keklikhasan <keklikhasan@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.1.4",
+    "iron-elements": "PolymerElements/iron-elements#1.0.0",
+    "paper-elements": "PolymerElements/paper-elements#1.0.1",
+    "underscore": "~1.8.3",
+    "page": "visionmedia/page.js#1.6.3",
+    "firebase-element": "GoogleWebComponents/firebase-element#^1.0.12"
+  }
+}

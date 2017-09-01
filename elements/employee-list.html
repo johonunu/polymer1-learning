@@ -1,0 +1,32 @@
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="employee-list">
+
+  <template>
+    <template is="dom-if" if="{{ !_isEmpty(employees) }}">
+      <div> Employee list:</div>
+      <template is="dom-repeat" items="{{employees}}" as="employee">
+        <div>First name: <span>{{employee.first}}</span></div>
+        <div>Last name: <span>{{employee.last}}</span></div>
+      </template>
+    </template>
+  </template>
+
+  <script>
+  	Polymer({
+     is: 'employee-list',
+     properties: {
+      employees: {
+        type: Array
+      }
+    },
+    ready: function() {
+      console.log('data',this.employees);
+    },
+    _isEmpty: function(employees){
+      return employees.length == 0;
+    }
+  });
+</script>
+</dom-module>

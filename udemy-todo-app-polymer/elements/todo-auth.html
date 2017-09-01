@@ -1,0 +1,37 @@
+<link rel="import" href="../bower_components/firebase-element/firebase-auth.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+
+
+<dom-module id="todo-auth">
+  <template>
+    <firebase-auth id="authenticate"
+                   user="{{user}}"
+                   location="{{location}}"
+                   provider="google">
+    </firebase-auth>
+
+    <paper-dialog modal opened="{{!user}}">
+      <h2>Sign in</h2>
+      <div>
+        <paper-button on-tap="signIn">Google</paper-button>
+      </div>
+    </paper-dialog>
+  </template>
+  <script>
+    Polymer({
+      is: 'todo-auth',
+      properties: {
+        user: {
+          notify: true
+        }
+      },
+      signIn: function () {
+        this.$.authenticate.login();
+      },
+      signOut: function () {
+        this.$.authenticate.logout();
+        this.user = null;
+      }
+    });
+  </script>
+</dom-module>
